@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  dateOfBirth: 2024-09-30
+  species: MyString
+  breed: MyString
+  color: MyString
+  weight: 1.5
+
+two:
+  name: MyString
+  dateOfBirth: 2024-09-30
+  species: MyString
+  breed: MyString
+  color: MyString
+  weight: 1.5

@@ -1,0 +1,23 @@
+rails console
+table.create([
+    { }
+])
+exit
+rails server
+
+Person.count
+
+rails generate controller Home index
+
+
+ActiveRecord::Base.connection.execute("SELECT * FROM people").to_a
+ActiveRecord::Base.connection.execute("SELECT * FROM animals").to_a
+
+http://localhost:3000/people
+http://localhost:3000/animals
+
+
+
+http://127.0.0.1:3000/
+
+http://127.0.0.1:3000/people/1

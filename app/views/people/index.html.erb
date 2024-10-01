@@ -1,0 +1,29 @@
+<h1>Liste des Personnes et leurs Animaux</h1>
+
+<% @people.each do |person| %>
+  <div style="border: 1px solid #ccc; border-radius: 8px; padding: 20px; margin-bottom: 20px; background-color: #f9f9f9;">
+    <h2 style="margin: 0; color: #333;"><%= person.firstName %> <%= person.lastName %></h2>
+    <p style="margin: 5px 0;">
+      <strong>Email :</strong> <%= person.email %><br>
+      <strong>Téléphone :</strong> <%= person.phoneNumber %>
+    </p>
+
+    <% if person.animals.any? %>
+      <h3 style="color: #555;">Animaux :</h3>
+      <ul style="list-style-type: none; padding-left: 0;">
+        <% person.animals.each do |animal| %>
+          <li style="border-bottom: 1px solid #ddd; padding: 10px 0;">
+            <strong><%= animal.name %></strong> (<%= animal.species %> - <%= animal.breed %>)<br>
+            <span style="color: #666;">Couleur : <%= animal.color %></span><br>
+            <span style="color: #666;">Poids : <%= animal.weight %> g</span><br>
+            <span style="color: #666;">Date de naissance : <%= animal.dateOfBirth.strftime('%d/%m/%Y') %></span>
+          </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p><em>Aucun animal</em></p>
+    <% end %>
+        <%= link_to 'Voir', person_path(person) %>
+
+  </div>
+<% end %>

@@ -1,0 +1,25 @@
+<h1><%= @person.firstName %> <%= @person.lastName %></h1>
+<p>
+  <strong>Email :</strong> <%= @person.email %><br>
+  <strong>Téléphone :</strong> <%= @person.phoneNumber %>
+</p>
+
+<h3>Animaux :</h3>
+<% if @person.animals.any? %>
+  <ul>
+    <% @person.animals.each do |animal| %>
+      <li>
+        <strong><%= animal.name %></strong> (<%= animal.species %>)<br>
+        <span>Race : <%= animal.breed %></span><br>
+        <span>Couleur : <%= animal.color %></span><br>
+        <span>Poids : <%= animal.weight %> g</span><br>
+        <span>Date de naissance : <%= animal.dateOfBirth.strftime('%d/%m/%Y') %></span>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>Aucun animal</p>
+<% end %>
+
+<%= link_to 'Modifier', edit_person_path(@person) %> | 
+<%= link_to 'Retour à la liste', people_path %>
