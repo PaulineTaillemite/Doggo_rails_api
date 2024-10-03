@@ -2,6 +2,14 @@
 
 <%= link_to "Ajouter un nouveau propriétaire", new_person_path %>
 
+<!-- Formulaire de recherche -->
+<%= form_with url: people_path, method: :get, local: true do %>
+  <div>
+    <%= label_tag :search, "Rechercher par nom" %>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Rechercher" %>
+  </div>
+<% end %>
 
 <% @people.each do |person| %>
   <div style="border: 1px solid #ccc; border-radius: 8px; padding: 20px; margin-bottom: 20px; background-color: #f9f9f9;">
@@ -26,7 +34,6 @@
     <% else %>
       <p><em>Aucun animal</em></p>
     <% end %>
-        <%= link_to 'Voir', person_path(person) %>
-
+    <%= link_to 'Voir', person_path(person) %>
   </div>
 <% end %>

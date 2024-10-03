@@ -1,5 +1,14 @@
 <h1>Liste des Animaux</h1>
 
+<!-- Barre de recherche -->
+<%= form_with url: animals_path, method: :get, local: true do %>
+  <div style="margin-bottom: 20px;">
+    <%= label_tag :search, "Rechercher par nom :", style: "margin-right: 10px;" %>
+    <%= text_field_tag :search, params[:search], placeholder: "Entrez un nom d'animal" %>
+    <%= submit_tag "Rechercher", class: "btn btn-secondary" %>
+  </div>
+<% end %>
+
 <% @animals.each do |animal| %>
   <div style="border: 1px solid #ccc; border-radius: 8px; padding: 20px; margin-bottom: 20px; background-color: #f9f9f9;">
     <h2 style="margin: 0; color: #333;"><%= animal.name %> (<%= animal.species %>)</h2>
@@ -18,5 +27,3 @@
     <%= link_to 'Voir', animal_path(animal), class: "btn btn-primary" %>
   </div>
 <% end %>
-
-

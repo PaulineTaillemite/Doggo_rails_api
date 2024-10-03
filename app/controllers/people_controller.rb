@@ -5,9 +5,13 @@ class PeopleController < ApplicationController
 
   # GET /people
   # Cette action récupère toutes les personnes dans la base de données et les stocke dans la variable `@people`.
-  # Cette variable sera accessible dans la vue correspondante (index_people.html.erb) pour afficher la liste des personnes.
+  # Si un paramètre de recherche est présent, elle filtre les résultats en fonction du prénom ou du nom de famille.
   def index
-    @people = Person.all
+    if params[:search].present?
+      @people = Person.where('firstName LIKE ? OR lastName LIKE ?', "%#{params[:search]}%", "%#{params[:search]}%")
+    else
+      @people = Person.all
+    end
   end
 
   # GET /people/:id
