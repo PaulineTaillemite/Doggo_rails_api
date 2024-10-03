@@ -1,9 +1,22 @@
-<!-- app/views/animals/index.html.erb -->
 <h1>Liste des Animaux</h1>
-<ul>
-  <% @animals.each do |animal| %>
-    <li>
-      <%= link_to "#{animal.name} - #{animal.species}", animal_path(animal) %> - Propriétaire ID : <%= animal.owner_id %>
-    </li>
-  <% end %>
-</ul>
+
+<% @animals.each do |animal| %>
+  <div style="border: 1px solid #ccc; border-radius: 8px; padding: 20px; margin-bottom: 20px; background-color: #f9f9f9;">
+    <h2 style="margin: 0; color: #333;"><%= animal.name %> (<%= animal.species %>)</h2>
+    <p style="margin: 5px 0;">
+      <strong>Couleur :</strong> <%= animal.color %><br>
+      <strong>Poids :</strong> <%= animal.weight %> g<br>
+      <strong>Date de naissance :</strong> <%= animal.dateOfBirth.strftime('%d/%m/%Y') %><br>
+      
+      <strong>Propriétaire :</strong> 
+      <% if animal.owner %>
+        <%= link_to "#{animal.owner.firstName} #{animal.owner.lastName}", person_path(animal.owner) %>
+      <% else %>
+        <em>Aucun propriétaire assigné</em>
+      <% end %>
+    </p>
+    <%= link_to 'Voir', animal_path(animal), class: "btn btn-primary" %>
+  </div>
+<% end %>
+
+
