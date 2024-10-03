@@ -8,11 +8,14 @@ class AnimalsController < ApplicationController
   # Si un paramètre de recherche est présent, elle filtre les résultats en fonction du nom.
   def index
     if params[:search].present?
-      @animals = Animal.where('name LIKE ?', "%#{params[:search]}%")
+      # Recherche les animaux par nom
+      @animals = Animal.where('name LIKE ?', "%#{params[:search]}%").page(params[:page]).per(5)
     else
-      @animals = Animal.all
+      # Si pas de recherche, affiche tous les animaux avec pagination
+      @animals = Animal.page(params[:page]).per(20)
     end
   end
+
 
   # GET /animals/:id
   # Cette action affiche les détails d'un animal spécifique. La méthode `set_animal` est appelée automatiquement avant
