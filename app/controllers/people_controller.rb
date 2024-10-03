@@ -7,12 +7,13 @@ class PeopleController < ApplicationController
   # Cette action récupère toutes les personnes dans la base de données et les stocke dans la variable `@people`.
   # Si un paramètre de recherche est présent, elle filtre les résultats en fonction du prénom ou du nom de famille.
   def index
-    if params[:search].present?
-      @people = Person.where('firstName LIKE ? OR lastName LIKE ?', "%#{params[:search]}%", "%#{params[:search]}%")
-    else
-      @people = Person.all
-    end
+    @people = if params[:search]
+                Person.where("firstName LIKE ? OR lastName LIKE ?", "%#{params[:search]}%", "%#{params[:search]}%").page(params[:page]).per(5)
+              else
+                Person.page(params[:page]).per(20)
+              end
   end
+  
 
   # GET /people/:id
   # Cette action affiche les détails d'une personne spécifique. La méthode `set_person` est appelée automatiquement avant
