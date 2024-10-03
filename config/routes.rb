@@ -14,8 +14,8 @@ Rails.application.routes.draw do
   root "home#index"
 
   # Routes pour les personnes
-  resources :people, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+  resources :people, only: [:index, :show, :new, :create]
 
   # Routes pour les animaux
-  resources :animals, only: [:index, :show] # Ajout de :show ici
+  resources :animals, only: [:index, :show, :new, :create]
 end

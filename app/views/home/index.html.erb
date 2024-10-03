@@ -1,2 +1,10 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<h1>Bienvenue sur notre application</h1>
+
+<p>Utilisez les liens ci-dessous pour naviguer :</p>
+
+<ul>
+  <li><%= link_to 'Voir la liste des personnes', people_path %></li>
+  <li><%= link_to 'Ajouter un nouveau propriétaire', new_person_path %></li>
+  <li><%= link_to 'Voir la liste des animaux', animals_path %></li>
+  <li><%= link_to 'Ajouter un nouvel animal', new_animal_path %></li>
+</ul>
