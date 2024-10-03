@@ -1,6 +1,9 @@
+<!-- app/views/animals/index.html.erb -->
 <h1>Liste des Animaux</h1>
 <ul>
   <% @animals.each do |animal| %>
-    <li> <%= animal.id %> <%= animal.name %> - <%= animal.species %> - Propriétaire ID : <%= animal.owner_id %></li>
+    <li>
+      <%= link_to "#{animal.name} - #{animal.species}", animal_path(animal) %> - Propriétaire ID : <%= animal.owner_id %>
+    </li>
   <% end %>
 </ul>

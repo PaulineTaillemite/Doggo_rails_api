@@ -1,3 +1,4 @@
+# config/routes.rb
 Rails.application.routes.draw do
   get "home/index"
   get "animals/index"
@@ -14,7 +15,7 @@ Rails.application.routes.draw do
 
   # Routes pour les personnes
   resources :people, only: [:index, :show, :new, :create, :edit, :update, :destroy]
-  
+
   # Routes pour les animaux
-  resources :animals, only: [:index]
+  resources :animals, only: [:index, :show] # Ajout de :show ici
 end

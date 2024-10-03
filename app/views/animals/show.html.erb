@@ -1,0 +1,12 @@
+<!-- app/views/animals/show.html.erb -->
+<h1>Détails de l'Animal : <%= @animal.name %></h1>
+<p>
+  <strong>Espèce :</strong> <%= @animal.species %><br>
+  <strong>Race :</strong> <%= @animal.breed %><br>
+  <strong>Couleur :</strong> <%= @animal.color %><br>
+  <strong>Poids :</strong> <%= @animal.weight %> g<br>
+  <strong>Date de naissance :</strong> <%= @animal.dateOfBirth.strftime('%d/%m/%Y') %><br>
+  <strong>Propriétaire ID :</strong> <%= @animal.owner_id %>
+</p>
+
+<%= link_to 'Retour à la liste des animaux', animals_path %>
