@@ -5,6 +5,11 @@ table.create([
 exit
 rails server
 
+if server is already in use 
+lsof -i :3000
+kill -9 PID
+
+
 Person.count
 
 rails generate controller Home index
